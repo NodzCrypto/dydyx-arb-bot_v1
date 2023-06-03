@@ -9,7 +9,7 @@ MODE = "DEV"
 ABORT_ALL_POSITIONS = True
 
 #Paire cointégré trouvé 
-FIND_COINTEGRATED_PAIR = False
+FIND_COINTEGRATED_PAIR = True
 
 # manage exits
 MANAGE_EXITS = True

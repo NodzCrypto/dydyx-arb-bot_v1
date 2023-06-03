@@ -6,8 +6,13 @@ from dydx3.constants import MARKET_BTC_USD
 from func_cointegration import store_cointegration_results
 from func_entry_pairs import open_positions
 from func_exit_pair import manage_trade_exits
+from func_messaging import send_message
 
 if __name__ == "__main__":
+
+    response = send_message("Test message bot")
+    print(response)
+    exit(1)
 
     #connect to client 
     try:
