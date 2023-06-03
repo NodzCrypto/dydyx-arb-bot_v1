@@ -6,24 +6,27 @@ from decouple import config
 MODE = "DEV"
 
 #ANNULATON DE TOUS LES ORDRES ET POSITIONS
-ABORT_ALL_POSITIONS = False
+ABORT_ALL_POSITIONS = True
 
 #Paire cointégré trouvé 
-FIND_COINTEGRATED_PAIR = True
+FIND_COINTEGRATED_PAIR = False
+
+# manage exits
+MANAGE_EXITS = True
 
 #Place a trades
 PLACE_TRADES = True
 
 #resolution - Timeframe
-RESOLUTION = "1Hours"
+RESOLUTION = "1HOUR"
 
 #Plage de jours pour le calcul des moving average
 WINDOW = 21
 
 # Thresholds - Opening
 MAX_HALF_LIFE = 24
-ZSCORE = 1.5
-USD_PER_TRADE = 50
+ZSCORE_TRESHOLD = 1.5
+USD_PER_TRADE = 100
 USD_MIN_COLLATERAL = 1880
 
 # Thresholds - Opening
