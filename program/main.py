@@ -8,11 +8,11 @@ from func_entry_pairs import open_positions
 from func_exit_pair import manage_trade_exits
 from func_messaging import send_message
 
+# MAIN FUNCTION
 if __name__ == "__main__":
 
-    response = send_message("Test message bot")
-    print(response)
-    exit(1)
+    # Message on start 
+    send_message("Bot launched successfully !") 
 
     #connect to client 
     try:
@@ -21,6 +21,7 @@ if __name__ == "__main__":
     except Exception as e:   
         print(e)
         print("Erreur de connexion client : ", e)
+        send_message(f"ERR03 - Failed to connect to client : {e}") 
         exit(1)
 
     # Abort all open positions
@@ -31,6 +32,7 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
             print("Error closing positions : ", e)
+            send_message(f"ERR04 - Failed closing all positions : {e}") 
             exit(1)
 
     #Find cointegrated pairs
@@ -41,6 +43,7 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
             print("Error constructing market prices ", e)
+            send_message(f"ERR05 - Failed constructing market prices : {e}") 
             exit(1)
 
     #Store cointegrated pairs
@@ -54,6 +57,7 @@ if __name__ == "__main__":
 
         except Exception as e:
             print("Error saving cointegrated pairs: ", e)
+            send_message(f"ERR06 - Failed saving cointegrated pairs : {e}") 
             exit(1)
 
     # Run as always on
@@ -67,6 +71,7 @@ if __name__ == "__main__":
 
             except Exception as e:
                 print("Error managing exiting positions: ", e)
+                send_message(f"ERR06 - Failed managing exiting positions : {e}") 
                 exit(1) 
 
         # Place trades for opening positions
@@ -77,6 +82,7 @@ if __name__ == "__main__":
 
             except Exception as e:
                 print("Error opening position: ", e)
+                send_message(f"ERR06 - Failed opening position : {e}") 
                 exit(1)        
 
    

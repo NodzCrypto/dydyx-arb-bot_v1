@@ -3,7 +3,7 @@ from func_private import place_market_order, check_order_status
 from datetime import datetime, timedelta
 import time
 from pprint import pprint
-
+from func_messaging import send_message
 
 #class: Agent for managing opening and checking trades
 class botAgent:
@@ -176,10 +176,11 @@ class botAgent:
 
                 if order_status_close_order != "FILLED":
                     print("ABORT PROGRAM !")
-                    print("Unexpected Error !")
+                    print("ERR01 - Unexpected Error !")
                     print(order_status_close_order)
 
-                    ## !!! CONSIDER SENDING MESSAGE HERE !!!!!
+                    #send message
+                    send_message(f"Err code : ERR01 - Failed to place a new trade. You need to stop and check the bot IMMEDIATLY !!! : {e}")
 
                     #Abort
                     exit(1)
@@ -188,10 +189,11 @@ class botAgent:
                 self.order_dict["pair_status"] = "ERROR"
                 self.order_dict["comment"] = f"Close Market_1 {self.market_2}: , {e}"
                 print("ABORT PROGRAM !")
-                print("Unexpected Error !")
+                print("ERR02 - Unexpected Error !")
                 print(order_status_close_order)
 
-                ## !!! CONSIDER SENDING MESSAGE HERE !!!!!
+                #send message
+                send_message(f"Err code : ERR02 - Failed to place a new trade. You need to stop and check the bot IMMEDIATLY !!! : {e}")
 
                 #Abort
                 exit(1)
