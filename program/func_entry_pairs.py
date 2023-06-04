@@ -6,6 +6,7 @@ from func_private import is_open_positions
 from func_bot_agent import botAgent
 import pandas as pd
 import json
+from func_messaging import send_message
 
 from pprint import pprint
 
@@ -109,9 +110,11 @@ def open_positions(client):
                         account = client.private.get_account()
                         free_collateral = float(account.data["account"]["freeCollateral"])
                         print(f"Balance: {free_collateral} and minimum at {USD_MIN_COLLATERAL}")
+                        send_message(f"Balance: {free_collateral} and minimum at {USD_MIN_COLLATERAL}")
 
                         # Guard: Ensure collateral
                         if free_collateral < USD_MIN_COLLATERAL:
+                            send_message(f"Trade aborted, not enough collateral")
                             break
 
                         # create botAgent
@@ -147,6 +150,7 @@ def open_positions(client):
                             print("---")
     # save agents
     print(f"Success: Manage open trades checked")
+    
     if len(bot_agents) > 0:
         with open("bot_agents.json", "w") as f:
             json.dump(bot_agents, f)

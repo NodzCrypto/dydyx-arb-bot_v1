@@ -17,6 +17,7 @@ if __name__ == "__main__":
     #connect to client 
     try:
         print("Connexion au client...")
+        send_message("Connexion au client...") 
         client = connexion_dydx()
     except Exception as e:   
         print(e)
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     if FIND_COINTEGRATED_PAIR:
         try: 
             print("Fetching market prices, it could take 3-5 mins, please wait...")
+            send_message("Fetching market prices, it could take 5-10 mins, please wait...") 
             df_market_prices = construct_market_prices(client)
         except Exception as e:
             print(e)
@@ -50,6 +52,7 @@ if __name__ == "__main__":
     if FIND_COINTEGRATED_PAIR:
         try: 
             print("Storing cointegrated pairs, please wait...")
+            send_message("Storing cointegrated pairs, please wait...")
             store_result = store_cointegration_results(df_market_prices)
             if store_result != "saved":
                 print("Error saving cointegrated pairs")

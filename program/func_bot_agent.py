@@ -96,7 +96,7 @@ class botAgent:
         print(f"{self.market_1}: Placing first order...")
         print(f"Side: {self.base_side}, Size: {self.base_size}, Price: {self.base_price}")
         print("---")
-
+        send_message(f"Side: {self.base_side}, {self.market_1}, Size: {self.base_size}, Price: {self.base_price}")
         
         # Place base order
         try:
@@ -131,6 +131,7 @@ class botAgent:
         print(f"{self.market_2}: Placing second order...")
         print(f"Side: {self.quote_side}, Size: {self.quote_size}, Price: {self.quote_price}")
         print("---")
+        send_message(f"Side: {self.quote_side}, {self.market_2}, Size: {self.quote_size}, Price: {self.quote_price}")
 
         # Place quote order
         try:

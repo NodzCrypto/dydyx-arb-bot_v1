@@ -3,10 +3,10 @@ from decouple import config
 
 
 #!!!!!! MODE SELECTION  !!!!!!
-MODE = "DEV"
+MODE = "PROD"
 
 #ANNULATON DE TOUS LES ORDRES ET POSITIONS
-ABORT_ALL_POSITIONS = True
+ABORT_ALL_POSITIONS = False
 
 #Paire cointégré trouvé 
 FIND_COINTEGRATED_PAIR = True
@@ -26,8 +26,8 @@ WINDOW = 21
 # Thresholds - Opening
 MAX_HALF_LIFE = 24
 ZSCORE_TRESHOLD = 1.5
-USD_PER_TRADE = 100
-USD_MIN_COLLATERAL = 1880
+USD_PER_TRADE = 15
+USD_MIN_COLLATERAL = 40
 
 # Thresholds - Opening
 CLOSE_AT_ZSCORE_CROSS = True
